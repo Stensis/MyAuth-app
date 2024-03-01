@@ -1,5 +1,5 @@
 // LoginScreen.tsx
-import React, { useState } from "react";
+import React from "react";
 import { View, Alert, StyleSheet } from "react-native";
 import { NavigationProp } from "@react-navigation/native";
 import { login } from "../services/authService";
@@ -13,8 +13,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
   const handleLogin = async (username: string, password: string) => {
     const success = await login(username, password);
     if (success) {
-      // Store authentication token securely (e.g., AsyncStorage)
-      // Navigation to the next screen
+      // Store authentication token securely 
       navigation.navigate("ArticleCreation");
     } else {
       Alert.alert("Error", "Invalid username or password");

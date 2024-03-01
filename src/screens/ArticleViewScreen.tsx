@@ -20,7 +20,8 @@ const ArticleViewScreen: React.FC = () => {
     try {
       const fetchedArticles = await getArticles();
       setArticles(fetchedArticles.reverse());
-      setFilteredArticles(fetchedArticles); // Initialize filteredArticles with all articles
+      // Initialize filteredArticles with all articles
+      setFilteredArticles(fetchedArticles);
     } catch (error) {
       console.error("Error fetching articles:", error);
     }

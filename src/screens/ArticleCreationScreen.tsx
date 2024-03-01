@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import { View, TextInput, Text, ScrollView, StyleSheet } from "react-native";
 import { createArticle, getArticles } from "../services/articleService";
 import Article from "../types/Article";
-import CustomButton from "../components/CustomButton"; // Import your custom button component
-import RNPickerSelect from "react-native-picker-select"; // Import Picker from 'react-native-picker-select'
+import CustomButton from "../components/CustomButton"; 
+import RNPickerSelect from "react-native-picker-select"; 
 
 const ArticleCreationScreen = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
-  const [searchCategory, setSearchCategory] = useState(""); // State for search input
+  const [searchCategory, setSearchCategory] = useState(""); 
   const [titleError, setTitleError] = useState("");
   const [contentError, setContentError] = useState("");
   const [categoryError, setCategoryError] = useState("");
   const [articles, setArticles] = useState<Article[]>([]);
-  const [filteredArticles, setFilteredArticles] = useState<Article[]>([]); // State to hold filtered articles
+  const [filteredArticles, setFilteredArticles] = useState<Article[]>([]); 
 
   useEffect(() => {
     // Fetch articles when the component mounts
