@@ -1,5 +1,6 @@
+// LoginForm.tsx
 import React, { useState } from "react";
-import { View, TextInput, Button } from "react-native";
+import { View, TextInput, Button, StyleSheet } from "react-native";
 
 interface LoginFormProps {
   onSubmit: (username: string, password: string) => void;
@@ -10,20 +11,28 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = () => {
+    // Perform validation
+    if (!username.trim() || !password.trim()) {
+      alert("Please enter both username and password");
+      return;
+    }
+
     onSubmit(username, password);
     setUsername("");
     setPassword("");
   };
 
   return (
-    <View>
+    <View style={styles.formContainer}>
       <TextInput
-        placeholder="Username"
+        style={styles.input}
+        placeholder="Username *"
         value={username}
         onChangeText={setUsername}
       />
       <TextInput
-        placeholder="Password"
+        style={styles.input}
+        placeholder="Password *"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
@@ -32,5 +41,20 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  formContainer: {
+    marginBottom: 20,
+    width: 300
+  },
+  input: {
+    width: "100%",
+    marginBottom: 10,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5
+  }
+});
 
 export default LoginForm;

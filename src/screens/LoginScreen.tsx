@@ -1,23 +1,16 @@
+// LoginScreen.tsx
 import React, { useState } from "react";
-import { View, TextInput, Button, Alert } from "react-native";
-import { NavigationProp } from "@react-navigation/native"; 
+import { View, Alert, StyleSheet } from "react-native";
+import { NavigationProp } from "@react-navigation/native";
 import { login } from "../services/authService";
+import LoginForm from "../components/LoginForm";
 
 interface Props {
   navigation: NavigationProp<any>;
 }
 
 const LoginScreen: React.FC<Props> = ({ navigation }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLogin = async () => {
-    // Check if username and password are not empty
-    if (!username.trim() || !password.trim()) {
-      Alert.alert("Error", "Please enter both username and password");
-      return;
-    }
-
+  const handleLogin = async (username: string, password: string) => {
     const success = await login(username, password);
     if (success) {
       // Store authentication token securely (e.g., AsyncStorage)
@@ -29,21 +22,18 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <TextInput
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <Button title="Login" onPress={handleLogin} />
+    <View style={styles.container}>
+      <LoginForm onSubmit={handleLogin} />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default LoginScreen;
