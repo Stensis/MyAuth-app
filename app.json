@@ -6,14 +6,18 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "description": "A simple React Native mobile application with token-based authentication.",
+    "author": "Irene Njuguna",
+    "privacy": "https://example.com/privacy-policy",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -21,10 +25,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "android": {
+        "permissions": ["CAMERA", "ACCESS_FINE_LOCATION"]
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "notification": {
+      "icon": "./assets/notification-icon.png",
+      "color": "#0000FF"
     }
   }
 }
